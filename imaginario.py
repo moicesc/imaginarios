@@ -10,6 +10,7 @@ class Imaginario:
         Args:
             real (float): The real part of the complex number.
             imag (float): The imaginary part of the complex number.
+
         """
         self.real = real
         self.imag = imag
@@ -29,3 +30,15 @@ class Imaginario:
 
         """
         return Imaginario(self.real + other.real, self.imag + other.imag)
+
+    def __sub__(self, other: 'Imaginario') -> 'Imaginario':
+        """Subtract two complex numbers.
+
+        Args:
+            other (Imaginario): The complex number to be subtracted
+
+        Returns:
+            Imaginario: The result of the subtraction.
+
+        """
+        return Imaginario(self.real - other.real, self.imag - other.imag)
