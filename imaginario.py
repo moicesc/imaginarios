@@ -1,4 +1,7 @@
 # python3
+"""
+Essential implementation for imaginary numbers.
+"""
 
 
 class Imaginario:
