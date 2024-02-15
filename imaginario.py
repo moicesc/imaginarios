@@ -45,3 +45,18 @@ class Imaginario:
 
         """
         return Imaginario(self.real - other.real, self.imag - other.imag)
+
+    def __mul__(self, other: 'Imaginario') -> 'Imaginario':
+        """Multiply two complex numbers.
+
+        Args:
+            other (Imaginario): The complex number to be multiplied.
+
+        Returns:
+            Imaginario: The result of the multiplication.
+
+        """
+        real_part = self.real * other.real - self.imag * other.imag
+        imag_part = self.real * other.imag + self.imag * other.real
+
+        return Imaginario(real_part, imag_part)

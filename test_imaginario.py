@@ -11,20 +11,33 @@ def test_numbers():
     """Test values for the arithmetic of complex numbers."""
     a = Imaginario(1.0, 1.0)
     b = Imaginario(2.0, 4.0)
-    return a, b
+    x = 1.0 + 1.0j
+    y = 2.0 + 4.0j
+    return a, b, x, y
 
 
 def test_addition(test_numbers):
     """Test addition operation"""
-    a, b = test_numbers
+    a, b, x, y = test_numbers
     result_addition = a + b
-    assert result_addition.real == 3.0
-    assert result_addition.imag == 5.0
+    expected_result = x + y
+    assert result_addition.real == expected_result.real
+    assert result_addition.imag == expected_result.imag
 
 
 def test_subtraction(test_numbers):
-    """Test subtraction operatio"""
-    a, b = test_numbers
+    """Test subtraction operation"""
+    a, b, x, y = test_numbers
     result_subtraction = a - b
-    assert result_subtraction.real == -1.0
-    assert result_subtraction.imag == -3.0
+    expected_result = x - y
+    assert result_subtraction.real == expected_result.real
+    assert result_subtraction.imag == expected_result.imag
+
+
+def test_multiplication(test_numbers):
+    """Test multiplication operation"""
+    a, b, x, y = test_numbers
+    result_multiplication = a * b
+    expected_result = x * y
+    assert result_multiplication.real == expected_result.real
+    assert result_multiplication.imag == expected_result.imag
