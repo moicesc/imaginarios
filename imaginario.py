@@ -60,3 +60,17 @@ class Imaginario:
         imag_part = self.real * other.imag + self.imag * other.real
 
         return Imaginario(real_part, imag_part)
+
+    def __truediv__(self, other: 'Imaginario') -> 'Imaginario':
+        """Divide two complex numbers.
+
+        Args:
+            other (Imaginario): The complex denominator
+
+        Returns:
+            Imaginario: The result of the division.
+        """
+        denominator = other.real ** 2 + other.imag ** 2
+        real_part = (self.real * other.real + self.imag * other.imag) / denominator
+        imag_part = (self.imag * other.real - self.real * other.imag) / denominator
+        return Imaginario(real_part, imag_part)

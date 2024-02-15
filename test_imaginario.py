@@ -41,3 +41,12 @@ def test_multiplication(test_numbers):
     expected_result = x * y
     assert result_multiplication.real == expected_result.real
     assert result_multiplication.imag == expected_result.imag
+
+
+def test_division(test_numbers):
+    """Test division operation."""
+    a, b, x, y = test_numbers
+    result_division = a / b
+    expected_result = x / y
+    assert result_division.real == pytest.approx(expected_result.real, rel=1e-6, abs=1e-12)
+    assert result_division.imag == pytest.approx(expected_result.imag, rel=1e-6, abs=1e-12)
