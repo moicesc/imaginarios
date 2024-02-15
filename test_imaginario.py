@@ -1,6 +1,7 @@
 """
 Tests for Imaginario functionality
 """
+import math
 import pytest
 
 from imaginario import Imaginario
@@ -50,3 +51,23 @@ def test_division(test_numbers):
     expected_result = x / y
     assert result_division.real == pytest.approx(expected_result.real, rel=1e-6, abs=1e-12)
     assert result_division.imag == pytest.approx(expected_result.imag, rel=1e-6, abs=1e-12)
+
+
+def test_from_polar():
+    """Test the creation from polar values"""
+    i = Imaginario.from_polar(1, math.pi/4)
+    assert i.real == pytest.approx(math.sqrt(2) / 2, rel=1e-6, abs=1e-12)
+    assert i.imag == pytest.approx(math.sqrt(2) / 2, rel=1e-6, abs=1e-12)
+
+
+def test_to_polar():
+    """Test the conversion to polar form."""
+    real = 3.0
+    imag = 4.0
+    expected_r = math.sqrt(real**2 + imag**2)
+    expected_theta = math.atan2(imag, real)
+
+    i = Imaginario(real, imag)
+    r, theta = i.to_polar()
+    assert theta == pytest.approx(expected_theta, rel=1e-6, abs=1e-12)
+    assert r == pytest.approx(expected_r, rel=1e-6, abs=1e-12)

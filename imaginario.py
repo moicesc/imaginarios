@@ -2,6 +2,8 @@
 """
 Essential implementation for imaginary numbers.
 """
+import math
+from typing import Tuple
 
 
 class Imaginario:
@@ -30,7 +32,6 @@ class Imaginario:
 
         Returns:
             Imaginario: The result of the addition.
-
         """
         return Imaginario(self.real + other.real, self.imag + other.imag)
 
@@ -42,7 +43,6 @@ class Imaginario:
 
         Returns:
             Imaginario: The result of the subtraction.
-
         """
         return Imaginario(self.real - other.real, self.imag - other.imag)
 
@@ -54,7 +54,6 @@ class Imaginario:
 
         Returns:
             Imaginario: The result of the multiplication.
-
         """
         real_part = self.real * other.real - self.imag * other.imag
         imag_part = self.real * other.imag + self.imag * other.real
@@ -74,3 +73,46 @@ class Imaginario:
         real_part = (self.real * other.real + self.imag * other.imag) / denominator
         imag_part = (self.imag * other.real - self.real * other.imag) / denominator
         return Imaginario(real_part, imag_part)
+
+    @property
+    def magnitude(self) -> float:
+        """Calculate the magnitude of a complex number.
+
+        Returns:
+            The magnitude of the complex number.
+        """
+        return math.sqrt(self.real**2 + self.imag**2)
+
+    @property
+    def phase(self) -> float:
+        """Calculate the phase of a complex number.
+
+        Returns:
+            The phase of the complex number in polar form.
+        """
+        return math.atan2(self.imag, self.real)
+
+    @classmethod
+    def from_polar(cls, magnitude: float, phase: float) -> 'Imaginario':
+        """Class method to provide an alternative constructor from the polar form.
+
+        Args:
+            magnitude (float): magnitude of the complex number.
+            phase (float): phase of the complex number
+
+        Returns:
+            Imaginario: Complex number
+        """
+        real_part = magnitude * math.cos(phase)
+        imag_part = magnitude * math.sin(phase)
+        return cls(real_part, imag_part)
+
+    def to_polar(self) -> Tuple[float, float]:
+        """Converts the complex number to polar form.
+
+        Returns:
+            Tuple with the magnitude and the phase of the complex number.
+        """
+        magnitude = self.magnitude
+        phase = self.phase
+        return magnitude, phase
