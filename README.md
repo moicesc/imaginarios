@@ -3,7 +3,8 @@ Essential implementation for Imaginary numbers
 
 ## Usage
 ```python
-from imaginario import Imaginario
+>>> import math
+>>> from imaginario import Imaginario
 
 >>> a = Imaginario(1.0, 2.0)
 >>> b = Imaginario(2.1, 3.5)
@@ -40,6 +41,35 @@ from imaginario import Imaginario
 >>> a / b
 0.5462184873949579 + 0.042016806722689086j
 ```
+
+### Magnitude & Phase
+
+```python
+>>> a.magnitude
+2.23606797749979
+>>> a.phase
+1.1071487177940904
+```
+
+### Conversion to polar form
+
+```python
+>>> a.to_polar()
+var = (2.23606797749979, 1.1071487177940904)
+```
+
+### Alternate creation from polar from
+```python
+>>> c = Imaginario.from_polar(1, math.pi/2)
+>>> c
+6.123233995736766e-17 + 1.0j
+
+>>> d = Imaginario.from_polar(2.23606797749979, 1.1071487177940904)
+>>> d
+1.0000000000000002 + 2.0j
+
+```
+
 
 ## License
 
