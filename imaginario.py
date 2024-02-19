@@ -70,9 +70,22 @@ class Imaginario:
             Imaginario: The result of the division.
         """
         denominator = other.real ** 2 + other.imag ** 2
+
+        if denominator == 0:
+            raise ZeroDivisionError("Division by zero is undefined.")
+
         real_part = (self.real * other.real + self.imag * other.imag) / denominator
         imag_part = (self.imag * other.real - self.real * other.imag) / denominator
+
         return Imaginario(real_part, imag_part)
+
+    # TODO: Implement absolute value method
+    def __abs__(self):
+        pass
+
+    # TODO: Implement power method
+    def __pow__(self, power, modulo=None):
+        pass
 
     @property
     def magnitude(self) -> float:
